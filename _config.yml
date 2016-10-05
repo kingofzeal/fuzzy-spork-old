@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle:
+title: Fuzzy Spork
+subtitle: 
 description:
-author: John Doe
-language:
-timezone:
+author: 
+language: en
+timezone: America/Chicago
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
-root: /
+url: http://www.signet-studios.com/FuzzySpork
+root: /FuzzySpork/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 
@@ -36,7 +36,7 @@ filename_case: 0
 render_drafts: false
 post_asset_folder: false
 relative_link: false
-future: true
+future: false
 highlight:
   enable: true
   line_number: true
@@ -68,4 +68,5 @@ theme: landscape
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type:
+  type: git
+  repo: https://github.com/kingofzeal/fuzzy-spork.git
