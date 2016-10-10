@@ -1,6 +1,6 @@
 ---
 title: The Fuzzy Spork
-date: 2016-10-05 19:37:48
+date: 2016-10-05 07:00:00
 tags:
 ---
 A fascinating picture, isn't it? A fuzzy spork. It conjures images that raise far more questions than they answer. What does it mean? What could make a spork fuzzy? Is it safe? Is it supposed to be like that? Is it really a fuzzy spork or is it a sporked fuzzy? Where are the adults?
