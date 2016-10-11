@@ -1,7 +1,7 @@
 ---
 title: On deployments and distribution
 date: 2016-10-11 07:00:00
-tags:
+tags: devops, build, deployment
 ---
 
 Ever since I started programming, I've been fascinated with what you can do with a codebase - not just the act of programming, but building and deploying it as well. For a programming company, the less time programmers have to work on building or deploying their code, the more productive they can be. The automation of these things can have a huge benefit.
