@@ -27,6 +27,6 @@ after_success:
 - rm -rf ./*
 - cp -r ../public/* .
 - git add -A .
-- git commit -m 'Automatic deploy with Travis-CI'
+- git commit -m 'Automatic publish with Travis-CI'
 - git branch -m gh-pages
 - git push -q -u origin gh-pages
