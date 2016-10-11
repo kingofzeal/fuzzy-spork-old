@@ -7,12 +7,15 @@ branches:
   only:
   - master
   
+before_install:
+- npm install hexo-cli -g
+  
 install:
 - npm install
 
 before_script:
-- git config user.name 'James McCollum'
-- git config user.email 'jmccollum@signet-studios.com'
+- git config --global user.name 'James McCollum'
+- git config --global user.email 'jmccollum@signet-studios.com'
 
 script:
 - hexo generate
