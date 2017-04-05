@@ -1,8 +1,10 @@
 ---
 title: The Non-standard Developer
-date: 2017-02-14 07:00:00
+date: 2017-04-05 11:00:00
 tags:
 ---
+
+
 I recently read [this really awesome atricle](https://medium.freecodecamp.com/my-journey-to-becoming-a-web-developer-from-scratch-without-a-cs-degree-2-years-later-and-what-i-4a7fd2ff5503#.57ujsobff) written by a developer who had no formal education or background and his journey to becoming a front-end developer. Having gone through a somewhat similar transformation, I was inspired to also write about my own transition into programming without a traditional programming background.
 
 ## Who are you anyway?
@@ -23,3 +25,4 @@ Back to the article. One thing the author doesn't really talk about directly is 
 - Don't be afraid to fight for what you think is right. When I first started my new role as a programmer, I was given a task to implement a new library into our product. However, after spending a day trying to tweak it and force it to work, I came to the conclusion that it wouldn't work for us, and I said as much to the team. After some discussion we all agreed and ultimately we ended up writing our own library to handle the task, which both looks and operates much better than the original solution. It felt akward for me to challenge something so early in my new role (especially since it was my first pure programming role), but looking back I'm glad I did, as it ended up being a much better product because of it.
 
 ## Long Story Longer
+At the end of the day, the biggest takeaway I can offer is that the path to being a programmer is much wider than other careers, and don't be afraid to persue it just because you don't have the formal education in the field. Have the passion to learn and practice, and you'll fit right in with the rest of us.
