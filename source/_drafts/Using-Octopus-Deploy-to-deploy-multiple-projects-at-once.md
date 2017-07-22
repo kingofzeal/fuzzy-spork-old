@@ -34,4 +34,6 @@ Keep in mind that the project _still_ does not actually do any work - it only tr
 
 We also group each Chain Deployment/Deploy a Package so we can skip both at once if we need to.
 
-The other nice thing of doing this is that when we create the release we get the same package selection list that every other product has, and it can be changed just like any other project mid-stream. This allows us to keep the process exactly the same from release to release, only changing the packages it uses to do so.
+The other nice thing of doing this is that when we create the release we get the same package selection list that every other product has, and it can be changed just like any other project mid-stream. This allows us to keep the process exactly the same from release to release, only changing the packages it uses to do so, which means we not only avoid the issue of the latest version going to an environment before we want, but we also can change the releases mid-cycle (for things like patches) by just updating the packages used.
+
+Keep in mind this only works if all the projects are configured to have release numbers that match a specific package's version, and that package is the one referenced by the `_Deploy` project. 
