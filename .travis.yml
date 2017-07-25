@@ -16,6 +16,7 @@ install:
 before_script:
 - git config --global user.name 'James McCollum'
 - git config --global user.email 'jmccollum@signet-studios.com'
+- hexo clean
 
 script:
 - hexo generate
