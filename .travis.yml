@@ -21,8 +21,6 @@ install:
 before_script:
 - git config --global user.name 'James McCollum'
 - git config --global user.email 'jmccollum@signet-studios.com'
-- git submodule init
-- git submodule update
 
 script:
 - hexo generate
