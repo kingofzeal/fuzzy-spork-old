@@ -76,3 +76,8 @@ sitemap:
 deploy:
   type: git
   repo: https://github.com/kingofzeal/fuzzy-spork.git
+
+about: 
+  name: "James McCollum"
+  github: "https://github.com/kingofzeal"
+  stackoverflow: "https://stackoverflow.com/users/1088711/kingofzeal"
