@@ -1,8 +1,10 @@
 ---
 title: Managing Expectations
-tags:
 comments: true
+date: 2017-08-02 13:33:27
+tags:
 ---
+
 
 This morning I realized that, as programmers, we frequently make assumptions about the software we write which seem to be reasonable, but aren't completely thought out.
 
