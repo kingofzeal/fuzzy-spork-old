@@ -23,6 +23,7 @@ install:
 - npm install
 - bower install
 - npm run prod
+- cd ../..
 
 before_script:
 - git config --global user.name 'James McCollum'
