@@ -12,15 +12,22 @@ branches:
   
 before_install:
 - npm install hexo-cli -g
+- npm install grunt-cli -generate
+- npm install bower -g
 - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
 - git submodule update --init --recursive
   
 install:
 - npm install
+- cd themes/tranquilpeak
+- npm install
+- bower install
 
 before_script:
 - git config --global user.name 'James McCollum'
 - git config --global user.email 'jmccollum@signet-studios.com'
+- cd themes/tranquilpeak
+- npm run prod
 
 script:
 - hexo generate
