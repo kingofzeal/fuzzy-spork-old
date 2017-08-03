@@ -7,7 +7,7 @@ tags:
 - Deployment
 ---
 
-Ever since I started programming, I've been fascinated with what you can do with a codebase - not just the act of programming, but building and deploying it as well. For a programming company, the less time programmers have to work on building or deploying their code, the more productive they can be. The automation of these things can have a huge benefit.
+Ever since I started programming, I've been fascinated with what you can do with a codebase - not just the act of programming, but building and deploying it as well. For a programming company, the less time programmers have to work on building or deploying their code, the more productive they can be. The automation of these things can have a huge benefit.<!-- more -->
 
 I'm sure many who may be reading this already have something in place to automatically build code, either on check-in, at a specific time, or both. Some may even have a system in place to automatically deploy code internally or to customers. But what is the real benefit from these things?
 

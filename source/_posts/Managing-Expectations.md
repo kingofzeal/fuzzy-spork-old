@@ -6,7 +6,7 @@ tags:
 ---
 
 
-This morning I realized that, as programmers, we frequently make assumptions about the software we write which seem to be reasonable, but aren't completely thought out.
+This morning I realized that, as programmers, we frequently make assumptions about the software we write which seem to be reasonable, but aren't completely thought out.<!-- more -->
 
 I have an older (second generation) iPad that I mostly use for playing games and managing a media server I have set up in my house. Occasionally I will use it as a note-taking device, but honestly it can't do much more, and I don't need it to. Since it's an older device, it's no longer receiving the latest-and-greatest iOS, and seems to be going through a kind of planned obsolescence that many other people have also noticed in aging iOS devices.
 

@@ -8,7 +8,7 @@ tags:
 
 We use Octopus Deploy at my workplace to handle all of our releases. The tool is one of the best I've had the pleasure of dealing with, and the more I interact with it, the more I realize just how powerful, yet flexible, it is. I will gladly recommend it to anyone who is looking for a way of releasing any kind of software. 
 
-However, there is always room for improvement. In this case, not necessarily improvement with the software package, but how we use it.
+However, there is always room for improvement. In this case, not necessarily improvement with the software package, but how we use it. <!-- more -->
 
 ## Environment Overview
 Before we get to the specific problems, let me first go through what our deployment process generally looks like.

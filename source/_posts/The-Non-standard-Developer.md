@@ -5,7 +5,7 @@ tags:
 ---
 
 
-I recently read [this really awesome atricle](https://medium.freecodecamp.com/my-journey-to-becoming-a-web-developer-from-scratch-without-a-cs-degree-2-years-later-and-what-i-4a7fd2ff5503#.57ujsobff) written by a developer who had no formal education or background and his journey to becoming a front-end developer. Having gone through a somewhat similar transformation, I was inspired to also write about my own transition into programming without a traditional programming background.
+I recently read [this really awesome atricle](https://medium.freecodecamp.com/my-journey-to-becoming-a-web-developer-from-scratch-without-a-cs-degree-2-years-later-and-what-i-4a7fd2ff5503#.57ujsobff) written by a developer who had no formal education or background and his journey to becoming a front-end developer. Having gone through a somewhat similar transformation, I was inspired to also write about my own transition into programming without a traditional programming background. <!-- more -->
 
 ## Who are you anyway?
 A fair question, and one I'm going to avoid almost entirely. Instead, I'm going to say that my formal education is in business, specifically accounting, and that my transition into pure development wasn't radical, but a career evolution. When I graduated college, I was hired to an organization that had recently implemented a new ERP (enterprise resource planning - think Quickbooks on steroids) software package and wanted someone who knew both business concepts as well as technically/programming concepts. I had some minor self-tought programming experience by that point, which I had demonstrated during my school days and ultimately helped in securing the position.

@@ -72,3 +72,8 @@ sitemap:
 deploy:
   type: git
   repo: https://github.com/kingofzeal/fuzzy-spork.git
+  
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
