@@ -22,12 +22,11 @@ install:
 - cd themes/tranquilpeak
 - npm install
 - bower install
+- npm run prod
 
 before_script:
 - git config --global user.name 'James McCollum'
 - git config --global user.email 'jmccollum@signet-studios.com'
-- cd themes/tranquilpeak
-- npm run prod
 
 script:
 - hexo generate
