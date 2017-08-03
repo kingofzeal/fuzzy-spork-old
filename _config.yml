@@ -38,7 +38,7 @@ post_asset_folder: true
 relative_link: false
 future: false
 highlight:
-  enable: false
+  enable: true
   line_number: true
   auto_detect: true
   tab_replace:
@@ -63,11 +63,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: clexy
-prism_plugin:
-  mode: 'preprocess'    # realtime/preprocess
-  theme: 'default'
-  line_number: false    # default false
+theme: tranquilpeak
 sitemap:
   path: sitemap.xml
 
@@ -76,8 +72,3 @@ sitemap:
 deploy:
   type: git
   repo: https://github.com/kingofzeal/fuzzy-spork.git
-
-about: 
-  name: "James McCollum"
-  github: "https://github.com/kingofzeal"
-  stackoverflow: "https://stackoverflow.com/users/1088711/kingofzeal"
