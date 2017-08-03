@@ -1,0 +1,600 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="The Fuzzy Spork">
+    <title>On deployments and distribution - The Fuzzy Spork</title>
+    <meta name="author" content="James McCollum">
+    
+    
+    
+        <link rel="alternate" type="application/atom+xml" title="RSS" href="/fuzzy-spork/atom.xml">
+    
+    <meta name="description" content="Ever since I started programming, I’ve been fascinated with what you can do with a codebase - not just the act of programming, but building and deploying it as well. For a programming company, the les">
+<meta name="keywords" content="Devops,Deployment,Build">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="On deployments and distribution">
+<meta property="og:url" content="http://kingofzeal.github.io/fuzzy-spork/2016/10/11/On-deployments-and-distribution/index.html">
+<meta property="og:site_name" content="The Fuzzy Spork">
+<meta property="og:description" content="Ever since I started programming, I’ve been fascinated with what you can do with a codebase - not just the act of programming, but building and deploying it as well. For a programming company, the les">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2017-08-03T13:43:11.597Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="On deployments and distribution">
+<meta name="twitter:description" content="Ever since I started programming, I’ve been fascinated with what you can do with a codebase - not just the act of programming, but building and deploying it as well. For a programming company, the les">
+    
+    
+        
+    
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/fuzzy-spork/assets/css/style-wazxcmllt157qw6k23qet180tao2ciortyirqljzikbuywfw4rvovizqedfr.min.css">
+    <!--STYLES END-->
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-85482724-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+
+<header id="header" data-behavior="2">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/fuzzy-spork/ ">The Fuzzy Spork</a>
+    </div>
+    
+        
+            <a  class="header-right-picture "
+                href="#about">
+        
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+<nav id="sidebar" data-behavior="2">
+    <div class="sidebar-container">
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/fuzzy-spork/ "
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/fuzzy-spork/all-categories"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                        <span class="sidebar-button-desc">Categories</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/fuzzy-spork/all-tags"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                        <span class="sidebar-button-desc">Tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/fuzzy-spork/all-archives"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                        <span class="sidebar-button-desc">Archives</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="https://github.com/kingofzeal" target="_blank" rel="noopener">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="http://stackoverflow.com/users/1088711" target="_blank" rel="noopener">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-stack-overflow"></i>
+                        <span class="sidebar-button-desc">Stack Overflow</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="https://twitter.com/kingofzeal" target="_blank" rel="noopener">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+                        <span class="sidebar-button-desc">Twitter</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/fuzzy-spork/atom.xml"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+                        <span class="sidebar-button-desc">RSS</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="2"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            On deployments and distribution
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time itemprop="datePublished" datetime="2016-10-11T12:00:00+00:00">
+	
+		    Oct 11, 2016
+    	
+    </time>
+    
+</div>
+
+    
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>Ever since I started programming, I’ve been fascinated with what you can do with a codebase - not just the act of programming, but building and deploying it as well. For a programming company, the less time programmers have to work on building or deploying their code, the more productive they can be. The automation of these things can have a huge benefit.<a id="more"></a></p>
+<p>I’m sure many who may be reading this already have something in place to automatically build code, either on check-in, at a specific time, or both. Some may even have a system in place to automatically deploy code internally or to customers. But what is the real benefit from these things?</p>
+<p>In many ways, having automated build and deployment solutions are as invaluable as have a version control solution. It doesn’t ultimately matter what you use to accomplish the task, but having something puts you in a much better place than not having anything. I, and I’m sure many others, have gotten so used to having such systems that I run my own to take care of things. Even this simple blog is version controlled and automatically deployed. At this point, it’s more habit than anything. My personal projects are all run through a build process on commit (I haven’t gotten to a deployment, for various reasons, but I’m working on it). If there is a perceived benefit from doing this on projects/programs that have little to no impact, how much more benefit is there for a company whose existance relies on getting code built and out the door?</p>
+<h2 id="Automated-Build-Solution"><a href="#Automated-Build-Solution" class="headerlink" title="Automated Build Solution"></a>Automated Build Solution</h2><p>This is the easy one. If you can’t build your code, then you have nothing to ship. But why should you have an automated build solution? Simply put, reliability. There’s an interesting mentality that arises from using source control: Code that isn’t checked in doesn’t exist. Having a build environment separate from your development environment ensures that the only code that can be built is the code that is checked in. Sure, you can (and will) miss check-ins that cause a build to fail, but that’s the point. Even more dangerously, without a separate machine, it’s possible (and even inevitable) that you will build a feature that wasn’t meant to be released.</p>
+<p>With a dedicated machine to build code, you can avoid all these issues. Additionally, with the right set of triggers and configuration, you won’t even need to give up your own time. Simply download the last build’s artifacts and you’re ready to deploy. This is even more helpful if your development cycle and deployment schedule don’t exactly line up - simply pull the last build from the last day of your development cycle. </p>
+<p>Building on a dedicated machine also helps with stability. There are plenty of stories of projects that will, for one reason or another, build on one machine but not another. By eliminating the variance between machines (by using the <em>same</em> machine), you can accurately say 99% of the time that the problem is with the code, not the environment.</p>
+<p>It’s also beneficial to have a build solution in place for a historical purpose: most solutions provide an easy way to track published artifacts over time. If a version of your code is released that has a bug, it’s easy to rollback to the last known working version, since you generally still have those artifacts. Without them, the only thing that can be done is to attempt to fix the bug, often while facing immense pressure from executives and customers. </p>
+<h2 id="Automated-Deployment-Solution"><a href="#Automated-Deployment-Solution" class="headerlink" title="Automated Deployment Solution"></a>Automated Deployment Solution</h2><p>There’s nothing that says the build solution and the deployment solution can’t be the same thing. I’ve worked with a build environment that has a large number of deployment steps, and a single build step. There’s nothing wrong with such a system (and in some cases it can make sense), but know that it might not always be the best option.</p>
+<p>Oddly enough, build solutions are generally found in most programming businesses but deployment solutions aren’t as common. Many times, the software being released doesn’t have a well-defined customer base, or a customer base that is so broad that such a system is deemed impractical. However, even in those situations a deployment solution could be a reasonable time saver.</p>
+<p>If a product is being deployed solely for internal use, a deployment of a product takes an abnormally long time, or if there are many complicated steps to deploy a product, you will almost always benefit from an automated deployment system. Not only does it help to organize where things should be deployed to, but it can do everything that is needed accurately and reliably. This isn’t to say that there won’t be problems - deployments need testing, just like everything else. However, you can be assured that every deployment, given the same settings, will always do the same thing. Once it has been set up, you will generally not need to look at it again.</p>
+<h2 id="Other-Thoughts"><a href="#Other-Thoughts" class="headerlink" title="Other Thoughts"></a>Other Thoughts</h2><p>Personally, I have always used <a href="https://www.jetbrains.com/teamcity/" target="_blank" rel="external">TeamCity</a> for my build system, even for personal projects. It has an easy-to-use interface, allows for running arbitrary scripts (helpful if you want to make it a deployment system), gets updates on a regular basis, and has a lot of plugins and features to support any type of project. The best part: it’s free for up to 20 configurations and 3 build agents (runners).</p>
+<p>For a deployment solution, I’ve used TeamCity to handle that as well, and it does a reasonable job at it. It requires more configuration than probably should be expected, but it still performs as expected. However, for more complex deployments, I’ve grown fond of <a href="https://octopus.com/" target="_blank" rel="external">Octopus Deploy</a>. It isolates deployment processes from deployment targets in a way that makes it very easy to expand either. The focus is on the Microsoft stack (with nice native support for IIS and Windows Services), but can be used for almost anything. It is also available for free (for up to 20 of any combination of projects, target machines and users), but the time it takes to set it up and configure it doesn’t lend itself well to personal projects, as they are generally only deployed to a single location. </p>
+<p>Finally, don’t discount other systems, such as <a href="https://travis-ci.org/" target="_blank" rel="external">Travis CI</a>, which excel at projects that are intrepreted, like Javascript and PHP (like this blog, which is generated with a Node package <code>Hexo</code>). Since these aren’t compiled in the traditional sense, such systems can be used to run unit tests and deploy on success. Travis in particular has great integration with Github, where you can see Pass/Fail statuses and even enforce checks on pull requests.</p>
+<p>I’m sure many who are reading this are already using most, if not all, these things, but for those who still are not: Take the time now and look into setting something up. You’ll thank yourself for it tomorrow.</p>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/fuzzy-spork/tags/Build/">Build</a> <a class="tag tag--primary tag--small t-link" href="/fuzzy-spork/tags/Deployment/">Deployment</a> <a class="tag tag--primary tag--small t-link" href="/fuzzy-spork/tags/Devops/">Devops</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/fuzzy-spork/2017/04/05/The-Non-standard-Developer/"  data-tooltip="The Non-standard Developer">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/fuzzy-spork/2016/10/05/The-Fuzzy-Spork/" data-tooltip="The Fuzzy Spork">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://kingofzeal.github.io/fuzzy-spork/2016/10/11/On-deployments-and-distribution/">
+                    <i class="fa fa-facebook-official"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://kingofzeal.github.io/fuzzy-spork/2016/10/11/On-deployments-and-distribution/">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://kingofzeal.github.io/fuzzy-spork/2016/10/11/On-deployments-and-distribution/">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </li>
+        
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2017 James McCollum. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="2">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/fuzzy-spork/2017/04/05/The-Non-standard-Developer/"  data-tooltip="The Non-standard Developer">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/fuzzy-spork/2016/10/05/The-Fuzzy-Spork/" data-tooltip="The Fuzzy Spork">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://kingofzeal.github.io/fuzzy-spork/2016/10/11/On-deployments-and-distribution/">
+                    <i class="fa fa-facebook-official"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://kingofzeal.github.io/fuzzy-spork/2016/10/11/On-deployments-and-distribution/">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://kingofzeal.github.io/fuzzy-spork/2016/10/11/On-deployments-and-distribution/">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </li>
+        
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="2">
+    <i id="btn-close-shareoptions" class="fa fa-close"></i>
+    <ul class="share-options">
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://kingofzeal.github.io/fuzzy-spork/2016/10/11/On-deployments-and-distribution/">
+                    <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://kingofzeal.github.io/fuzzy-spork/2016/10/11/On-deployments-and-distribution/">
+                    <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://kingofzeal.github.io/fuzzy-spork/2016/10/11/On-deployments-and-distribution/">
+                    <i class="fa fa-google-plus"></i><span>Share on Google+</span>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        
+
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <h4 id="about-card-name">James McCollum</h4>
+        
+            <div id="about-card-bio"><p>author.bio</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>author.job</p>
+
+            </div>
+        
+        
+    </div>
+</div>
+
+        <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-close"></i></span>
+            <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search"
+                    class="form-control input--large search-input" placeholder="Search "
+                    />
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">no post found</div>
+            <div class="results">
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://kingofzeal.github.io/fuzzy-spork/2016/10/05/The-Fuzzy-Spork/">
+                            <h3 class="media-heading">The Fuzzy Spork</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Oct 5, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>A fascinating picture, isn’t it? A fuzzy spork. It conjures images that raise far more questions than they answer. What does it mean? What could make a spork fuzzy? Is it safe? Is it supposed to be like that? Is it really a fuzzy spork or is it a sporked fuzzy? Where are the adults?</div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://kingofzeal.github.io/fuzzy-spork/2016/10/11/On-deployments-and-distribution/">
+                            <h3 class="media-heading">On deployments and distribution</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Oct 11, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>Ever since I started programming, I’ve been fascinated with what you can do with a codebase - not just the act of programming, but building and deploying it as well. For a programming company, the less time programmers have to work on building or deploying their code, the more productive they can be. The automation of these things can have a huge benefit.</div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://kingofzeal.github.io/fuzzy-spork/2017/04/05/The-Non-standard-Developer/">
+                            <h3 class="media-heading">The Non-standard Developer</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Apr 5, 2017
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>I recently read <a href="https://medium.freecodecamp.com/my-journey-to-becoming-a-web-developer-from-scratch-without-a-cs-degree-2-years-later-and-what-i-4a7fd2ff5503#.57ujsobff" target="_blank" rel="external">this really awesome atricle</a> written by a developer who had no formal education or background and his journey to becoming a front-end developer. Having gone through a somewhat similar transformation, I was inspired to also write about my own transition into programming without a traditional programming background.</div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://kingofzeal.github.io/fuzzy-spork/2017/08/02/Managing-Expectations/">
+                            <h3 class="media-heading">Managing Expectations</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Aug 2, 2017
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>This morning I realized that, as programmers, we frequently make assumptions about the software we write which seem to be reasonable, but aren’t completely thought out.</div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium"
+                data-message-zero="no post found"
+                data-message-one="1 post found"
+                data-message-other="{n} posts found">
+                4 posts found
+            </p>
+        </div>
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('/fuzzy-spork/assets/images/cover.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/fuzzy-spork/assets/js/script-2tmymfaxd5d1wxbvzro6odno8zcfccfmjtwmr02tappckfsxovyu8vemncjy.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'http://kingofzeal.github.io/fuzzy-spork/2016/10/11/On-deployments-and-distribution/';
+                 
+                    this.page.identifier = '2016/10/11/On-deployments-and-distribution/';
+                 
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'fuzzy-spork';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
+
+
+    </body>
+</html>

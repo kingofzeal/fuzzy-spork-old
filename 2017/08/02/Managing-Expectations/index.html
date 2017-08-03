@@ -1,0 +1,595 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="The Fuzzy Spork">
+    <title>Managing Expectations - The Fuzzy Spork</title>
+    <meta name="author" content="James McCollum">
+    
+    
+    
+        <link rel="alternate" type="application/atom+xml" title="RSS" href="/fuzzy-spork/atom.xml">
+    
+    <meta name="description" content="This morning I realized that, as programmers, we frequently make assumptions about the software we write which seem to be reasonable, but aren’t completely thought out.">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Managing Expectations">
+<meta property="og:url" content="http://kingofzeal.github.io/fuzzy-spork/2017/08/02/Managing-Expectations/index.html">
+<meta property="og:site_name" content="The Fuzzy Spork">
+<meta property="og:description" content="This morning I realized that, as programmers, we frequently make assumptions about the software we write which seem to be reasonable, but aren’t completely thought out.">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2017-08-03T13:43:11.597Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Managing Expectations">
+<meta name="twitter:description" content="This morning I realized that, as programmers, we frequently make assumptions about the software we write which seem to be reasonable, but aren’t completely thought out.">
+    
+    
+        
+    
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/fuzzy-spork/assets/css/style-wazxcmllt157qw6k23qet180tao2ciortyirqljzikbuywfw4rvovizqedfr.min.css">
+    <!--STYLES END-->
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-85482724-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+
+<header id="header" data-behavior="2">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/fuzzy-spork/ ">The Fuzzy Spork</a>
+    </div>
+    
+        
+            <a  class="header-right-picture "
+                href="#about">
+        
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+<nav id="sidebar" data-behavior="2">
+    <div class="sidebar-container">
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/fuzzy-spork/ "
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/fuzzy-spork/all-categories"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                        <span class="sidebar-button-desc">Categories</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/fuzzy-spork/all-tags"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                        <span class="sidebar-button-desc">Tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/fuzzy-spork/all-archives"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                        <span class="sidebar-button-desc">Archives</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="https://github.com/kingofzeal" target="_blank" rel="noopener">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="http://stackoverflow.com/users/1088711" target="_blank" rel="noopener">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-stack-overflow"></i>
+                        <span class="sidebar-button-desc">Stack Overflow</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="https://twitter.com/kingofzeal" target="_blank" rel="noopener">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+                        <span class="sidebar-button-desc">Twitter</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/fuzzy-spork/atom.xml"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+                        <span class="sidebar-button-desc">RSS</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="2"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            Managing Expectations
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time itemprop="datePublished" datetime="2017-08-02T18:33:27+00:00">
+	
+		    Aug 02, 2017
+    	
+    </time>
+    
+</div>
+
+    
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>This morning I realized that, as programmers, we frequently make assumptions about the software we write which seem to be reasonable, but aren’t completely thought out.<a id="more"></a></p>
+<p>I have an older (second generation) iPad that I mostly use for playing games and managing a media server I have set up in my house. Occasionally I will use it as a note-taking device, but honestly it can’t do much more, and I don’t need it to. Since it’s an older device, it’s no longer receiving the latest-and-greatest iOS, and seems to be going through a kind of planned obsolescence that many other people have also noticed in aging iOS devices.</p>
+<p>I recently downloaded a new game for it, an idle-builder type game. As with most games of this type, it has a mechanism where you can continue to earn the game currency even when the app is closed. However, the (in this case, problematic) implementation gives some insight into the mind of the developer. I obviously don’t have access to the code, and I can only guess at what’s going on, but the theory I have points to the developer having reasonable but incorrect assumptions that lead to a way of processing that is efficient (and if slightly changed could even be pretty clever), but equally incorrect.</p>
+<p>Much of this is exposed because my hardware is older, slower and generally less stable than most of the devices on the market. As such, things tend to crash. A lot. I’ve gotten used to it, and generally don’t tolerate apps that frequently crash before even getting to a point where I can interact with them. However, in this case it’s just stable enough that I can play for a decent amount of time before it gets to that point. What I noticed was that when recovering from a crash, I would get the offline compensation not for the time it took me to reopen the app, but since the last time <em>I gracefully closed it</em>. </p>
+<p>I found that doing certain actions can trigger a crash fairly reliably (again, on my device - I don’t suspect this is possible on newer devices). As I played with it some more, I found that when I perform normal actions that increase how much I get while offline and trigger a crash, it comes back online and gives the reward based on the <em>current</em> (now updated) rate, not the original rate. Combine this with a continuously growing time frame and I was able to advance much quicker than was probably intended by the developer.</p>
+<h2 id="So-what’s-going-on"><a href="#So-what’s-going-on" class="headerlink" title="So what’s going on?"></a>So what’s going on?</h2><p>First, I want to point out that I’m not an iOS developer, and have never touched iOS languages, so I may not be using the correct terminology. From what I can tell, the app is wired into an event that is fired whenever the app goes into standby. This event is raised if you go to the app switcher, when a notification box is displayed, etc - basically any time the app loses focus for any reason. When the event is raised, a local DateTime setting is set with the current clock value. Then, when the app is restored from the standby state, it takes <code>(DateTime.Now - [Saved DateTime]) * [current offline rate]</code> and gives you that amount of currency.</p>
+<p>At the face of it, this seems a perfectly reasonable calculation. Since the DateTime is saved whenever the app goes into <em>any</em> standby state, including if you open the app switcher to manually kill the app, and the offline rate doesn’t change while you aren’t in the app, and it makes it difficult to “game” the system. This is still prone to adjustments of the system clock (ie, manually adjusting the clock forwards or backwards to make it seem as if more time has passed than it actually has), but those can be countered by other means and I didn’t check to see if they were handled or not.</p>
+<p>However, it seems the saved DateTime value is <em>not</em> updated on a crash, or any other kind of event for that matter (like buying something, or literally any user interaction) - only when the app goes to standby. As a result, I’m able to exploit the instability of the app running on my device to force a crash, and then reload it, and take advantage of the fact that the app doesn’t know that it’s been opened before. Additionally, since all the other saved values of the game (like the offline earning rate) are saved as soon as possible, when the calculation is performed at start up, you not only get credit for the time but at the higher rate.</p>
+<h2 id="Real-world-applications"><a href="#Real-world-applications" class="headerlink" title="Real world applications"></a>Real world applications</h2><p>I write this not from the perspective of how to take advantage of a programmer’s fallacy, but what we as programmers can learn from this. And for me, the lesson is to challenge all your assumptions. The biggest assumption this developer made was that the event that fires on standby will <em>always</em> fire, no matter what. There are other minor assumptions that were made, including that because a a device has a compatible OS version the app can be run on that device, but when combined, they allow someone to take advantage of the built-in mechanics to do things that weren’t necessarily intended.</p>
+<p>In this case, it’s just a game - an argument can be made that nobody is really being harmed. However, the same lesson can be applied to other, perhaps more critical, areas as well like:</p>
+<ul>
+<li>“We don’t need HTTPS/SSL because it’s an internal resource”, or “it’s secured by a VPN”</li>
+<li>“We don’t need to validate information on the server because the client can handle that and having it in two places isn’t DRY”</li>
+<li>“The operating system didn’t change any relevant APIs, so we can support the older version to be more compatible”</li>
+<li>“We have control over the API and the client code, so we can change anything to suit our needs”</li>
+</ul>
+<p>Some assumptions might be valid, and in some cases the cost to remedy a faulty assumption might be deemed too high for the risk it exposes. The goal is not to make sure everything is perfect, but to examine the often unspoken reasons for doing things a particular way, make sure it’s clear <em>why</em> it was done, and think of uncommon events that could lead to unexpected behavior.</p>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/fuzzy-spork/2017/04/05/The-Non-standard-Developer/" data-tooltip="The Non-standard Developer">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://kingofzeal.github.io/fuzzy-spork/2017/08/02/Managing-Expectations/">
+                    <i class="fa fa-facebook-official"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://kingofzeal.github.io/fuzzy-spork/2017/08/02/Managing-Expectations/">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://kingofzeal.github.io/fuzzy-spork/2017/08/02/Managing-Expectations/">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </li>
+        
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2017 James McCollum. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="2">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/fuzzy-spork/2017/04/05/The-Non-standard-Developer/" data-tooltip="The Non-standard Developer">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://kingofzeal.github.io/fuzzy-spork/2017/08/02/Managing-Expectations/">
+                    <i class="fa fa-facebook-official"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://kingofzeal.github.io/fuzzy-spork/2017/08/02/Managing-Expectations/">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://kingofzeal.github.io/fuzzy-spork/2017/08/02/Managing-Expectations/">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </li>
+        
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="2">
+    <i id="btn-close-shareoptions" class="fa fa-close"></i>
+    <ul class="share-options">
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://kingofzeal.github.io/fuzzy-spork/2017/08/02/Managing-Expectations/">
+                    <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://kingofzeal.github.io/fuzzy-spork/2017/08/02/Managing-Expectations/">
+                    <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://kingofzeal.github.io/fuzzy-spork/2017/08/02/Managing-Expectations/">
+                    <i class="fa fa-google-plus"></i><span>Share on Google+</span>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        
+
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <h4 id="about-card-name">James McCollum</h4>
+        
+            <div id="about-card-bio"><p>author.bio</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>author.job</p>
+
+            </div>
+        
+        
+    </div>
+</div>
+
+        <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-close"></i></span>
+            <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search"
+                    class="form-control input--large search-input" placeholder="Search "
+                    />
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">no post found</div>
+            <div class="results">
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://kingofzeal.github.io/fuzzy-spork/2016/10/05/The-Fuzzy-Spork/">
+                            <h3 class="media-heading">The Fuzzy Spork</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Oct 5, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>A fascinating picture, isn’t it? A fuzzy spork. It conjures images that raise far more questions than they answer. What does it mean? What could make a spork fuzzy? Is it safe? Is it supposed to be like that? Is it really a fuzzy spork or is it a sporked fuzzy? Where are the adults?</div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://kingofzeal.github.io/fuzzy-spork/2016/10/11/On-deployments-and-distribution/">
+                            <h3 class="media-heading">On deployments and distribution</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Oct 11, 2016
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>Ever since I started programming, I’ve been fascinated with what you can do with a codebase - not just the act of programming, but building and deploying it as well. For a programming company, the less time programmers have to work on building or deploying their code, the more productive they can be. The automation of these things can have a huge benefit.</div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://kingofzeal.github.io/fuzzy-spork/2017/04/05/The-Non-standard-Developer/">
+                            <h3 class="media-heading">The Non-standard Developer</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Apr 5, 2017
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>I recently read <a href="https://medium.freecodecamp.com/my-journey-to-becoming-a-web-developer-from-scratch-without-a-cs-degree-2-years-later-and-what-i-4a7fd2ff5503#.57ujsobff" target="_blank" rel="external">this really awesome atricle</a> written by a developer who had no formal education or background and his journey to becoming a front-end developer. Having gone through a somewhat similar transformation, I was inspired to also write about my own transition into programming without a traditional programming background.</div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://kingofzeal.github.io/fuzzy-spork/2017/08/02/Managing-Expectations/">
+                            <h3 class="media-heading">Managing Expectations</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Aug 2, 2017
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>This morning I realized that, as programmers, we frequently make assumptions about the software we write which seem to be reasonable, but aren’t completely thought out.</div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium"
+                data-message-zero="no post found"
+                data-message-one="1 post found"
+                data-message-other="{n} posts found">
+                4 posts found
+            </p>
+        </div>
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('/fuzzy-spork/assets/images/cover.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/fuzzy-spork/assets/js/script-2tmymfaxd5d1wxbvzro6odno8zcfccfmjtwmr02tappckfsxovyu8vemncjy.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'http://kingofzeal.github.io/fuzzy-spork/2017/08/02/Managing-Expectations/';
+                 
+                    this.page.identifier = '2017/08/02/Managing-Expectations/';
+                 
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'fuzzy-spork';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
+
+
+    </body>
+</html>
