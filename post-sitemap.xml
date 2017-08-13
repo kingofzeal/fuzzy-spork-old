@@ -7,16 +7,8 @@
     </url>
 
     <url>
-        <loc>http://kingofzeal.github.io/fuzzy-spork/2017/08/02/Managing-Expectations/</loc>
-        <lastmod>2017-08-12T13:50:20.176Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>http://kingofzeal.github.io/fuzzy-spork/2016/10/11/On-deployments-and-distribution/</loc>
-        <lastmod>2017-08-12T13:50:20.176Z</lastmod>
+        <lastmod>2017-08-13T13:50:38.031Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -24,7 +16,7 @@
 
     <url>
         <loc>http://kingofzeal.github.io/fuzzy-spork/2016/10/05/The-Fuzzy-Spork/</loc>
-        <lastmod>2017-08-12T13:50:20.176Z</lastmod>
+        <lastmod>2017-08-13T13:50:38.031Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -32,7 +24,15 @@
 
     <url>
         <loc>http://kingofzeal.github.io/fuzzy-spork/2017/04/05/The-Non-standard-Developer/</loc>
-        <lastmod>2017-08-12T13:50:20.176Z</lastmod>
+        <lastmod>2017-08-13T13:50:38.031Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://kingofzeal.github.io/fuzzy-spork/2017/08/02/Managing-Expectations/</loc>
+        <lastmod>2017-08-13T13:50:38.027Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
