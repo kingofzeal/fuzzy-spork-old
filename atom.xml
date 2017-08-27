@@ -5,7 +5,7 @@
   <link href="/fuzzy-spork/atom.xml" rel="self"/>
   
   <link href="http://kingofzeal.github.io/fuzzy-spork/"/>
-  <updated>2017-08-26T13:57:56.634Z</updated>
+  <updated>2017-08-27T13:59:06.114Z</updated>
   <id>http://kingofzeal.github.io/fuzzy-spork/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://kingofzeal.github.io/fuzzy-spork/2017/08/02/Managing-Expectations/"/>
     <id>http://kingofzeal.github.io/fuzzy-spork/2017/08/02/Managing-Expectations/</id>
     <published>2017-08-02T18:33:27.000Z</published>
-    <updated>2017-08-26T13:57:56.634Z</updated>
+    <updated>2017-08-27T13:59:06.114Z</updated>
     
     <content type="html"><![CDATA[<p>This morning I realized that, as programmers, we frequently make assumptions about the software we write which seem to be reasonable, but aren’t completely thought out.<a id="more"></a></p>
 <p>I have an older (second generation) iPad that I mostly use for playing games and managing a media server I have set up in my house. Occasionally I will use it as a note-taking device, but honestly it can’t do much more, and I don’t need it to. Since it’s an older device, it’s no longer receiving the latest-and-greatest iOS, and seems to be going through a kind of planned obsolescence that many other people have also noticed in aging iOS devices.</p>
@@ -55,7 +55,7 @@
     <link href="http://kingofzeal.github.io/fuzzy-spork/2017/04/05/The-Non-standard-Developer/"/>
     <id>http://kingofzeal.github.io/fuzzy-spork/2017/04/05/The-Non-standard-Developer/</id>
     <published>2017-04-05T16:00:00.000Z</published>
-    <updated>2017-08-26T13:57:56.634Z</updated>
+    <updated>2017-08-27T13:59:06.114Z</updated>
     
     <content type="html"><![CDATA[<p>I recently read <a href="https://medium.freecodecamp.com/my-journey-to-becoming-a-web-developer-from-scratch-without-a-cs-degree-2-years-later-and-what-i-4a7fd2ff5503#.57ujsobff" target="_blank" rel="external">this really awesome atricle</a> written by a developer who had no formal education or background and his journey to becoming a front-end developer. Having gone through a somewhat similar transformation, I was inspired to also write about my own transition into programming without a traditional programming background. <a id="more"></a></p>
 <h2 id="Who-are-you-anyway"><a href="#Who-are-you-anyway" class="headerlink" title="Who are you anyway?"></a>Who are you anyway?</h2><p>A fair question, and one I’m going to avoid almost entirely. Instead, I’m going to say that my formal education is in business, specifically accounting, and that my transition into pure development wasn’t radical, but a career evolution. When I graduated college, I was hired to an organization that had recently implemented a new ERP (enterprise resource planning - think Quickbooks on steroids) software package and wanted someone who knew both business concepts as well as technically/programming concepts. I had some minor self-tought programming experience by that point, which I had demonstrated during my school days and ultimately helped in securing the position.</p>
@@ -85,7 +85,7 @@
     <link href="http://kingofzeal.github.io/fuzzy-spork/2016/10/11/On-deployments-and-distribution/"/>
     <id>http://kingofzeal.github.io/fuzzy-spork/2016/10/11/On-deployments-and-distribution/</id>
     <published>2016-10-11T12:00:00.000Z</published>
-    <updated>2017-08-26T13:57:56.634Z</updated>
+    <updated>2017-08-27T13:59:06.114Z</updated>
     
     <content type="html"><![CDATA[<p>Ever since I started programming, I’ve been fascinated with what you can do with a codebase - not just the act of programming, but building and deploying it as well. For a programming company, the less time programmers have to work on building or deploying their code, the more productive they can be. The automation of these things can have a huge benefit.<a id="more"></a></p>
 <p>I’m sure many who may be reading this already have something in place to automatically build code, either on check-in, at a specific time, or both. Some may even have a system in place to automatically deploy code internally or to customers. But what is the real benefit from these things?</p>
@@ -123,7 +123,7 @@
     <link href="http://kingofzeal.github.io/fuzzy-spork/2016/10/05/The-Fuzzy-Spork/"/>
     <id>http://kingofzeal.github.io/fuzzy-spork/2016/10/05/The-Fuzzy-Spork/</id>
     <published>2016-10-05T12:00:00.000Z</published>
-    <updated>2017-08-26T13:57:56.634Z</updated>
+    <updated>2017-08-27T13:59:06.114Z</updated>
     
     <content type="html"><![CDATA[<p>A fascinating picture, isn’t it? A fuzzy spork. It conjures images that raise far more questions than they answer. What does it mean? What could make a spork fuzzy? Is it safe? Is it supposed to be like that? Is it really a fuzzy spork or is it a sporked fuzzy? Where are the adults?<a id="more"></a></p>
 <p>Honestly, I can’t give any answers to any of these, especially that last one. However, I can honestly say that if I ever do see a fuzzy spork in real life, I’m going to be looking very closely to see just what’s up with it.</p>
