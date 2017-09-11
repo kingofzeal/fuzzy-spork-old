@@ -8,21 +8,21 @@
     
     <url>
         <loc>http://kingofzeal.github.io/fuzzy-spork/all-archives/</loc>
-        <lastmod>2017-09-10T14:07:00.878Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <url>
-        <loc>http://kingofzeal.github.io/fuzzy-spork/all-categories/</loc>
-        <lastmod>2017-09-10T14:07:00.878Z</lastmod>
+        <lastmod>2017-09-11T14:07:17.315Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <url>
         <loc>http://kingofzeal.github.io/fuzzy-spork/all-tags/</loc>
-        <lastmod>2017-09-10T14:07:00.878Z</lastmod>
+        <lastmod>2017-09-11T14:07:17.315Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>http://kingofzeal.github.io/fuzzy-spork/all-categories/</loc>
+        <lastmod>2017-09-11T14:07:17.315Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
