@@ -25,7 +25,11 @@ However, there is one last hurdle - the certificate is identified by Subject, wh
 After much trial and error, I found that altering the script a little bit allows us to search for a certificate that covers the website we're deploying. I've turned this into a Step Template so we can re-use the logic in multiple projects, but this is the core of the script:
 
 ```powershell
-Set-OctopusVariable -name "DiscoveredThumbprint" -value "$DefaultThumbprint"
+Write-Host "Search Enabled: $SearchDynamicCertificate"
+Write-Host "Default Thumbprint: $DefaultThumbprint"
+Write-Host "DNS Subject: $DnsSubject"
+
+$disoveredThumbprint = $DefaultThumbprint
 
 if ($SearchDynamicCertificate){
     $thumbprint = Get-ChildItem Cert:\LocalMachine\My -Recurse | Where-Object {
@@ -40,11 +44,12 @@ if ($SearchDynamicCertificate){
     
     if (-not [string]::IsNullOrWhiteSpace($thumbprint)){
         Write-Host "Found certificate $thumbprint that covers $DnsSubject"
-        Set-OctopusVariable -name "DiscoveredThumbprint" -value "$thumbprint"
+        $disoveredThumbprint = $thumbprint
     }
 }
 
-Write-Host "Using $thumbprint for DiscoveredThumbprint"
+Write-Host "Using $disoveredThumbprint for DiscoveredThumbprint"
+Set-OctopusVariable -name "DiscoveredThumbprint" -value "$disoveredThumbprint"
 ```
 
 `DefaultThumbprint`, `SearchDynamicCertificate` and `DnsSubject` are all parameters of the template, and in our case they map directly to the original `thumbprint` project variable, a new checkbox project variable, and the binding DNS project variable, respectively. 
