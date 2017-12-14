@@ -14,14 +14,14 @@
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/fuzzy-spork/atom.xml">
     
     <meta name="description" content="Ever since I started programming, I’ve been fascinated with what you can do with a codebase - not just the act of programming, but building and deploying it as well. For a programming company, the les">
-<meta name="keywords" content="Devops,Deployment,Build">
+<meta name="keywords" content="Devops,Build,Deployment">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="On deployments and distribution">
 <meta property="og:url" content="http://kingofzeal.github.io/fuzzy-spork/2016/10/11/On-deployments-and-distribution/index.html">
 <meta property="og:site_name" content="The Fuzzy Spork">
 <meta property="og:description" content="Ever since I started programming, I’ve been fascinated with what you can do with a codebase - not just the act of programming, but building and deploying it as well. For a programming company, the les">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-11-07T19:51:13.646Z">
+<meta property="og:updated_time" content="2017-12-14T14:08:00.047Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="On deployments and distribution">
 <meta name="twitter:description" content="Ever since I started programming, I’ve been fascinated with what you can do with a codebase - not just the act of programming, but building and deploying it as well. For a programming company, the les">
@@ -34,7 +34,7 @@
     
     
     <!--STYLES-->
-    <link rel="stylesheet" href="/fuzzy-spork/assets/css/style-ustbzgxiahgqkuhz18f4yxh9grtaymh2z0kwzm3rx2ka9nti308ipqamdlex.min.css">
+    <link rel="stylesheet" href="/fuzzy-spork/assets/css/style-nabg2pcbgctmgmczaxqpcidlkdvcyfa1ret12cozb1xghk9v7joojo5x2fr1.min.css">
     <!--STYLES END-->
     
     <script type="text/javascript">
@@ -222,9 +222,9 @@
 <h2 id="Automated-Deployment-Solution"><a href="#Automated-Deployment-Solution" class="headerlink" title="Automated Deployment Solution"></a>Automated Deployment Solution</h2><p>There’s nothing that says the build solution and the deployment solution can’t be the same thing. I’ve worked with a build environment that has a large number of deployment steps, and a single build step. There’s nothing wrong with such a system (and in some cases it can make sense), but know that it might not always be the best option.</p>
 <p>Oddly enough, build solutions are generally found in most programming businesses but deployment solutions aren’t as common. Many times, the software being released doesn’t have a well-defined customer base, or a customer base that is so broad that such a system is deemed impractical. However, even in those situations a deployment solution could be a reasonable time saver.</p>
 <p>If a product is being deployed solely for internal use, a deployment of a product takes an abnormally long time, or if there are many complicated steps to deploy a product, you will almost always benefit from an automated deployment system. Not only does it help to organize where things should be deployed to, but it can do everything that is needed accurately and reliably. This isn’t to say that there won’t be problems - deployments need testing, just like everything else. However, you can be assured that every deployment, given the same settings, will always do the same thing. Once it has been set up, you will generally not need to look at it again.</p>
-<h2 id="Other-Thoughts"><a href="#Other-Thoughts" class="headerlink" title="Other Thoughts"></a>Other Thoughts</h2><p>Personally, I have always used <a href="https://www.jetbrains.com/teamcity/" target="_blank" rel="external">TeamCity</a> for my build system, even for personal projects. It has an easy-to-use interface, allows for running arbitrary scripts (helpful if you want to make it a deployment system), gets updates on a regular basis, and has a lot of plugins and features to support any type of project. The best part: it’s free for up to 20 configurations and 3 build agents (runners).</p>
-<p>For a deployment solution, I’ve used TeamCity to handle that as well, and it does a reasonable job at it. It requires more configuration than probably should be expected, but it still performs as expected. However, for more complex deployments, I’ve grown fond of <a href="https://octopus.com/" target="_blank" rel="external">Octopus Deploy</a>. It isolates deployment processes from deployment targets in a way that makes it very easy to expand either. The focus is on the Microsoft stack (with nice native support for IIS and Windows Services), but can be used for almost anything. It is also available for free (for up to 20 of any combination of projects, target machines and users), but the time it takes to set it up and configure it doesn’t lend itself well to personal projects, as they are generally only deployed to a single location. </p>
-<p>Finally, don’t discount other systems, such as <a href="https://travis-ci.org/" target="_blank" rel="external">Travis CI</a>, which excel at projects that are intrepreted, like Javascript and PHP (like this blog, which is generated with a Node package <code>Hexo</code>). Since these aren’t compiled in the traditional sense, such systems can be used to run unit tests and deploy on success. Travis in particular has great integration with Github, where you can see Pass/Fail statuses and even enforce checks on pull requests.</p>
+<h2 id="Other-Thoughts"><a href="#Other-Thoughts" class="headerlink" title="Other Thoughts"></a>Other Thoughts</h2><p>Personally, I have always used <a href="https://www.jetbrains.com/teamcity/" target="_blank" rel="noopener">TeamCity</a> for my build system, even for personal projects. It has an easy-to-use interface, allows for running arbitrary scripts (helpful if you want to make it a deployment system), gets updates on a regular basis, and has a lot of plugins and features to support any type of project. The best part: it’s free for up to 20 configurations and 3 build agents (runners).</p>
+<p>For a deployment solution, I’ve used TeamCity to handle that as well, and it does a reasonable job at it. It requires more configuration than probably should be expected, but it still performs as expected. However, for more complex deployments, I’ve grown fond of <a href="https://octopus.com/" target="_blank" rel="noopener">Octopus Deploy</a>. It isolates deployment processes from deployment targets in a way that makes it very easy to expand either. The focus is on the Microsoft stack (with nice native support for IIS and Windows Services), but can be used for almost anything. It is also available for free (for up to 20 of any combination of projects, target machines and users), but the time it takes to set it up and configure it doesn’t lend itself well to personal projects, as they are generally only deployed to a single location. </p>
+<p>Finally, don’t discount other systems, such as <a href="https://travis-ci.org/" target="_blank" rel="noopener">Travis CI</a>, which excel at projects that are intrepreted, like Javascript and PHP (like this blog, which is generated with a Node package <code>Hexo</code>). Since these aren’t compiled in the traditional sense, such systems can be used to run unit tests and deploy on success. Travis in particular has great integration with Github, where you can see Pass/Fail statuses and even enforce checks on pull requests.</p>
 <p>I’m sure many who are reading this are already using most, if not all, these things, but for those who still are not: Take the time now and look into setting something up. You’ll thank yourself for it tomorrow.</p>
 
             
@@ -532,7 +532,7 @@
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"><p>I recently read <a href="https://medium.freecodecamp.com/my-journey-to-becoming-a-web-developer-from-scratch-without-a-cs-degree-2-years-later-and-what-i-4a7fd2ff5503#.57ujsobff" target="_blank" rel="external">this really awesome atricle</a> written by a developer who had no formal education or background and his journey to becoming a front-end developer. Having gone through a somewhat similar transformation, I was inspired to also write about my own transition into programming without a traditional programming background.</div>
+                        <div class="media-content hide-xs font-merryweather"><p>I recently read <a href="https://medium.freecodecamp.com/my-journey-to-becoming-a-web-developer-from-scratch-without-a-cs-degree-2-years-later-and-what-i-4a7fd2ff5503#.57ujsobff" target="_blank" rel="noopener">this really awesome atricle</a> written by a developer who had no formal education or background and his journey to becoming a front-end developer. Having gone through a somewhat similar transformation, I was inspired to also write about my own transition into programming without a traditional programming background.</div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
@@ -557,6 +557,26 @@
                     <hr>
                 </div>
                 
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://kingofzeal.github.io/fuzzy-spork/2017/12/14/Using-Octopus-Deploy-to-deploy-multiple-projects-at-once/">
+                            <h3 class="media-heading">Using Octopus Deploy to deploy multiple projects at once</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Dec 14, 2017
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>We use Octopus Deploy at my workplace to handle all of our releases. The tool is one of the best I’ve had the pleasure of dealing with, and the more I interact with it, the more I realize just how powerful, yet flexible, it is. I will gladly recommend it to anyone who is looking for a way of releasing any kind of software. </p>
+<p>However, there is always room for improvement. In this case, not necessarily improvement with the software package, but how we use it.</div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
             </div>
         </div>
         <div class="modal-footer">
@@ -564,7 +584,7 @@
                 data-message-zero="no post found"
                 data-message-one="1 post found"
                 data-message-other="{n} posts found">
-                4 posts found
+                5 posts found
             </p>
         </div>
     </div>
@@ -573,7 +593,7 @@
         
 <div id="cover" style="background-image:url('/fuzzy-spork/assets/images/cover.jpg');"></div>
         <!--SCRIPTS-->
-<script src="/fuzzy-spork/assets/js/script-k0wn1dftpz19bbtj9vmwqxzax46bchotorqqcnzup3r8hxm0grvxxsjdarll.min.js"></script>
+<script src="/fuzzy-spork/assets/js/script-vpxp5kbmg2ntdzj2ni8fj6uaheqosym1vzgup8uejkx2xsbs1lx5mim91kmr.min.js"></script>
 <!--SCRIPTS END-->
 
     
