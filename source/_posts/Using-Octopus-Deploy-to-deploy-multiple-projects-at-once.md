@@ -4,7 +4,9 @@ tags:
   - Octopus Deploy
   - Devops
   - Deployment
+date: 2017-12-14 08:00:00
 ---
+
 
 We use Octopus Deploy at my workplace to handle all of our releases. The tool is one of the best I've had the pleasure of dealing with, and the more I interact with it, the more I realize just how powerful, yet flexible, it is. I will gladly recommend it to anyone who is looking for a way of releasing any kind of software. 
 
