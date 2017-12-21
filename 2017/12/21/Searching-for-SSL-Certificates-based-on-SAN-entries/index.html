@@ -6,29 +6,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="The Fuzzy Spork">
-    <title>Using Octopus Deploy to deploy multiple projects at once - The Fuzzy Spork</title>
+    <title>Searching for SSL Certificates based on SAN entries - The Fuzzy Spork</title>
     <meta name="author" content="James McCollum">
     
     
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/fuzzy-spork/atom.xml">
     
-    <meta name="description" content="We use Octopus Deploy at my workplace to handle all of our releases. The tool is one of the best I’ve had the pleasure of dealing with, and the more I interact with it, the more I realize just how pow">
-<meta name="keywords" content="Devops,Deployment,Octopus Deploy">
+    <meta name="description" content="Lately, I’ve been playing with Lets Encrypt as a means to encrypt public(ish) web-based services I run on my local server. It’s actually remarkable what this non-profit group has accomplished when it">
+<meta name="keywords" content="Devops,LetsEncrypt,SSL Certificates,Octopus Deploy">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="Using Octopus Deploy to deploy multiple projects at once">
-<meta property="og:url" content="http://kingofzeal.github.io/fuzzy-spork/2017/12/14/Using-Octopus-Deploy-to-deploy-multiple-projects-at-once/index.html">
+<meta property="og:title" content="Searching for SSL Certificates based on SAN entries">
+<meta property="og:url" content="http://kingofzeal.github.io/fuzzy-spork/2017/12/21/Searching-for-SSL-Certificates-based-on-SAN-entries/index.html">
 <meta property="og:site_name" content="The Fuzzy Spork">
-<meta property="og:description" content="We use Octopus Deploy at my workplace to handle all of our releases. The tool is one of the best I’ve had the pleasure of dealing with, and the more I interact with it, the more I realize just how pow">
+<meta property="og:description" content="Lately, I’ve been playing with Lets Encrypt as a means to encrypt public(ish) web-based services I run on my local server. It’s actually remarkable what this non-profit group has accomplished when it">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://kingofzeal.github.io/fuzzy-spork/2017/12/14/Using-Octopus-Deploy-to-deploy-multiple-projects-at-once/Project%20Steps.png">
-<meta property="og:image" content="http://kingofzeal.github.io/fuzzy-spork/2017/12/14/Using-Octopus-Deploy-to-deploy-multiple-projects-at-once/Deploy%20Step%20Details.png">
-<meta property="og:image" content="http://kingofzeal.github.io/fuzzy-spork/2017/12/14/Using-Octopus-Deploy-to-deploy-multiple-projects-at-once/Create%20Release.png">
-<meta property="og:updated_time" content="2017-12-21T14:25:27.322Z">
+<meta property="og:updated_time" content="2017-12-21T14:25:27.318Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Using Octopus Deploy to deploy multiple projects at once">
-<meta name="twitter:description" content="We use Octopus Deploy at my workplace to handle all of our releases. The tool is one of the best I’ve had the pleasure of dealing with, and the more I interact with it, the more I realize just how pow">
-<meta name="twitter:image" content="http://kingofzeal.github.io/fuzzy-spork/2017/12/14/Using-Octopus-Deploy-to-deploy-multiple-projects-at-once/Project%20Steps.png">
+<meta name="twitter:title" content="Searching for SSL Certificates based on SAN entries">
+<meta name="twitter:description" content="Lately, I’ve been playing with Lets Encrypt as a means to encrypt public(ish) web-based services I run on my local server. It’s actually remarkable what this non-profit group has accomplished when it">
     
     
         
@@ -198,14 +194,14 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title" itemprop="headline">
-            Using Octopus Deploy to deploy multiple projects at once
+            Searching for SSL Certificates based on SAN entries
         </h1>
     
     
         <div class="post-meta">
-    <time itemprop="datePublished" datetime="2017-12-14T14:00:00+00:00">
+    <time itemprop="datePublished" datetime="2017-12-21T14:00:00+00:00">
 	
-		    Dec 14, 2017
+		    Dec 21, 2017
     	
     </time>
     
@@ -216,30 +212,18 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>We use Octopus Deploy at my workplace to handle all of our releases. The tool is one of the best I’ve had the pleasure of dealing with, and the more I interact with it, the more I realize just how powerful, yet flexible, it is. I will gladly recommend it to anyone who is looking for a way of releasing any kind of software. </p>
-<p>However, there is always room for improvement. In this case, not necessarily improvement with the software package, but how we use it. <a id="more"></a></p>
-<h2 id="Environment-Overview"><a href="#Environment-Overview" class="headerlink" title="Environment Overview"></a>Environment Overview</h2><p>Before we get to the specific problems, let me first go through what our deployment process generally looks like.</p>
-<p>We operate on a two week release cycle. At the end of each cycle, we package all our products up and send it to Octopus. From there we create a release for each product, which is then pushed to a Staging environment for final testing. </p>
-<p>We have 4 major products that are released using 7 Octopus projects, and each of the products may or may not have changes during each release cycle. We offer our products as an on-premise package and as a hosted cloud-based SAAS offering, and have an active Beta program for customers who want early access to new features. To accommodate this, we have a total of 6 environments - <code>Development</code>, <code>Staging</code>, <code>On Site Beta</code>, <code>Hosted Beta</code>, <code>On Site Release</code> and <code>Hosted Release</code>.</p>
-<p>Finally, because of our SAAS offering, we make heavy use of tenants - each of our customers has their own discrete copy of the software, but on a system which may be shared by other customers.</p>
-<p>Overall, we likely have what many would consider a ‘small’ setup for Octopus - I have heard of companies that have 10s of environments and hundreds of projects. While we may be small, we are at the point where to take care of everything manually would take several hours of work on a frequent basis, not to mention be error-prone.</p>
-<h2 id="So-now-what"><a href="#So-now-what" class="headerlink" title="So now what?"></a>So now what?</h2><p>When all this is put together, there are a LOT of individual tasks to be run. It’s relatively easy to queue everything all our projects and just let them all run, but if there are problems mid way through the process, it can be difficult to recover. This can be compounded by the fact that many of our products generally need to be deployed in a certain order, and while they do recover gracefully if they are done in the wrong order, it can result in some downtime until everything is complete.</p>
-<p>One alternative that was discussed, which we did for a little while, was to do each project one at a time, and not starting the next until everything was deployed successfully. Since we aren’t <em>quite</em> ready for scheduling our deployments yet, this means one or more people need to stay up and baby sit the entire process, which can easily take a couple hours. If something did error out, then the time it took to identify and correct the issue would be added to the total time. This worked for a little while, but as we began to scale it was obvious this wouldn’t work long term.</p>
-<h2 id="Chain-Deployments"><a href="#Chain-Deployments" class="headerlink" title="Chain Deployments"></a>Chain Deployments</h2><p>Enter the Octopus step template <code>Chain Deployment</code>. This is a community-provided PowerShell script that makes use of Octopus’ open API to allow one project to automatically trigger the deployment of another project. It is pretty configurable to allow for different applications, and it seemed like an obvious solution to our problem. </p>
-<p>Using this, we could have configured each of our projects to trigger the release of the next project in line, but since we also want to be able to deploy a specific product independently from the rest, we instead opted to make one more project, which we call <code>_Deploy</code>.</p>
-<p>This project is basically only responsible for the deployment of all of our products at the end of the release cycle. The version number for each release of <code>_Deploy</code> matches that of our flagship product, and it’s mostly just a series of Chain Deployment tasks. Each of the tasks are configured to wait until the chained deployment is complete before moving to the next, which effectively pauses the release process if an error occurs.</p>
-<p>However, this was not as simple as creating a project with 7 Chain Deployment steps and calling it a day. As I mentioned earlier, all our products are released to a Beta program. In our case, we will release new code to our beta customers immediately after a release cycle before pushing it to our remaining customers after the following cycle. We can’t just use Chain Deployment, as it would either always push the most recent version to all environments (or attempt to, anyway - the lifecycle would prohibit it), or we would have to edit the project steps every release to have the specific version number of each of the products.</p>
-<p>That first option is unacceptable, and the second would run into issues if we have to release a patch or hotfix to a given product - we would have to create an entirely new release with the new version numbers and promote it along the lifecycle, which can take a while. In an ideal world, we could release only the impacted projects to the impacted environments, and then update <code>_Deploy</code> to use new version going forward.</p>
-<h2 id="Making-it-all-work"><a href="#Making-it-all-work" class="headerlink" title="Making it all work"></a>Making it all work</h2><p>So how do we make it work then? Instead of the 7 steps you might expect, we have 14 - each of our Chain Deployment steps also has an associated Deploy a Package step to accompany it.</p>
-<p>Keep in mind that the <code>_Deploy</code> project <em>still</em> does not actually do any work - it only triggers the other projects to deploy. Instead, we scope the Deploy a Package steps to only work in a <code>Testing</code> environment (which coincidentally isn’t used in any of our lifecycles), and then configure the Chain Deployment to reference the package version that is used in that step. Here’s what it looks like:</p>
-<p><img src="Project Steps.png" alt=""><br><img src="Deploy Step Details.png" alt=""></p>
-<p>As you can see, we also group each Chain Deployment/Deploy a Package so we can skip the entire process and don’t accidentally the whole thing.</p>
-<p>The other nice thing of doing this is that when we create the release we get the same package selection list that every other product has, and it can be changed just like any other project mid-stream. This allows us to keep the process exactly the same from release to release, only changing the packages it uses to do so, which means we not only avoid the issue of the latest version going to an environment before we want, but we also can change the releases mid-cycle (for things like patches) by just updating the packages used.</p>
-<p><img src="Create Release.png" alt=""></p>
-<p>A keen eye might notice that we only have 6 packages in the list. This is because our flagship product isn’t quite done with the conversion to Octopus yet, so there is no package to deploy. Instead, we use the version number of the <code>_Deploy</code> release to determine what version number to use for that project.</p>
-<p>I also feel I should point out that this only works because all our projects are configured to have release numbers that match a specific package’s version, and that package is the one referenced by the <code>_Deploy</code> project. </p>
-<h2 id="Now-what"><a href="#Now-what" class="headerlink" title="Now what?"></a>Now what?</h2><p>We’ve been using this project for a little while now, and we’ve found that setting this up not only made things easier, but more efficient. Since the output of the chained deployments (or at least, some of it) is displayed when looking at the <code>_Deploy</code> process, it’s easier to gauge how well things are progressing. Not having every possible task queued all at once also helps the overall process cope with changes or occasional one-off tasks that need to be done during a deployment. It’s also easier to on-board new people to how the deployment process works - create the release and click a button. </p>
-<p>No matter how we look at it, this has been a net gain for our deployment process, and I hope it inspires you to think outside the box to do something simple yet powerful for yours.</p>
+            <p>Lately, I’ve been playing with <a href="https://letsencrypt.org/" target="_blank" rel="noopener">Lets Encrypt</a> as a means to encrypt public(ish) web-based services I run on my local server. It’s actually remarkable what this non-profit group has accomplished when it comes to SSL - they offer free, automated SSL certificates to anybody who wants them. They even support SAN certificates (those that cover multiple, explicitly-named DNS entries), and starting in January they will offer wildcard certificates. I will tell anybody who is willing to listen, and who is looking to avoid paying paying $50+ for an SSL certificate, about them and encourage everyone to look into their service. <a id="more"></a></p>
+<p>The only real downside (which some argue isn’t really a downside) is that these certificates generally have a pretty short lifetime - they last 90 days, with no options for longer lengths (unlike other CAs). There are reasons for this, but they make up for this by being completely automated - it literally takes seconds to get a new certificate. If you are on a Windows machine, you can snag a tool from Github which not only handles the request for the certificate, but also installs it, updates your IIS bindings, and creates a scheduled task that will look at the state of your certificates and, if needed (generally after about 60 days - 30 days before they expire), automatically renew them. It is as close to a set it and forget it system, and you don’t have to run the risk of letting your certificates expire while you wait for a new one.</p>
+<p>However, having constantly (and automatically) changing SSL certificates can preset an interesting challenge if you use Octopus Deploy to deploy your websites. If you are only deploying a single website, then the answer is trivial - there is a <a href="http://library.octopusdeploy.com/step-templates/bc81b8a6-dc56-4769-87b5-650af7a38162/actiontemplate-lets-encrypt-create-ssl-certificate" target="_blank" rel="noopener">community step template</a> that takes care of most of the hard work for you. </p>
+<p>But this only renews the certificate when you do to deploy a project - if you could potentially go more than 90 days between deployments, you run the risk of the certificate expiring. There are features that help mitigate this, such as setting up Octopus notifications when a certificate is about to expire, but ultimately you still need to perform a deployment to get the new certificate.<br>Additionally, this really only works if you have a single website. If you are deploying multiple websites to the same IIS service, and you want to bind all of them to port 443 (the default SSL port), you need a SAN certificate, which the current template doesn’t really addresses. </p>
+<p>There is a currently outstanding <a href="https://octopusdeploy.uservoice.com/forums/170787-general/suggestions/15045072-support-letsncrypt-for-octopus-certificates" target="_blank" rel="noopener">UserVoice suggestion</a> to address this by adding Lets Encrypt a first-class citizen, but it looks like that’s part of <a href="https://github.com/OctopusDeploy/Issues/issues/2701" target="_blank" rel="noopener">‘Phase 3’</a> of managing certificates. In the meantime, there is a post on the UserVoice suggestion that offers a workaround: run a script that finds a given certificate by Subject name (often the primary DNS Name the certificate was issued for), and update the thumbprint in the deployment process with whatever certificate is currently there.</p>
+<p>For now, this seems like a better option. It doesn’t require any unnecessary deployments - the Lets Encrypt certificate is presumably scheduled to be updated on the server periodically, and the current thumbprint is simply obtained and used at deployment time. This allows for greater flexibility in how certificates are managed, by being able to use SAN or (eventually) wildcard certificates. While they aren’t being managed by Octopus, which can be argued is the best place to have them, at the very least having a new certificate for the site won’t interfere with the deployment process. </p>
+<p>However, there is one last hurdle - the certificate is identified by Subject, which may not necessarily represent the DNS entry for the website we’re deploying to. In the case of a SAN certificate, if it covers 4 websites, you will need to provide this detail (and hope it doesn’t change) for 3 out of the 4 websites. This is less than ideal, as a change in one project may mean a change in others.</p>
+<p>After much trial and error, I found that altering the script a little bit allows us to search for a certificate that covers the website we’re deploying. I’ve turned this into a Step Template so we can re-use the logic in multiple projects, but this is the core of the script:</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Write-Host</span> <span class="string">"Search Enabled: <span class="variable">$SearchDynamicCertificate</span>"</span></span><br><span class="line"><span class="built_in">Write-Host</span> <span class="string">"Default Thumbprint: <span class="variable">$DefaultThumbprint</span>"</span></span><br><span class="line"><span class="built_in">Write-Host</span> <span class="string">"DNS Subject: <span class="variable">$DnsSubject</span>"</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$disoveredThumbprint</span> = <span class="variable">$DefaultThumbprint</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$SearchDynamicCertificate</span>)&#123;</span><br><span class="line">    <span class="variable">$thumbprint</span> = <span class="built_in">Get-ChildItem</span> Cert:\LocalMachine\My -Recurse | <span class="built_in">Where-Object</span> &#123;</span><br><span class="line">        <span class="variable">$_</span>.NotAfter <span class="nomarkup">-gt</span> (<span class="built_in">get-date</span>) -and <span class="variable">$_</span>.NotBefore <span class="nomarkup">-le</span> (<span class="built_in">get-date</span>)</span><br><span class="line">    &#125; | <span class="built_in">Select-Object</span> -Property Thumbprint,@&#123;</span><br><span class="line">        Name=<span class="string">"San"</span>;</span><br><span class="line">        Expression=&#123;<span class="variable">$_</span>.Extensions | <span class="built_in">Where-Object</span> &#123;<span class="variable">$_</span>.Oid.FriendlyName <span class="nomarkup">-eq</span> <span class="string">"subject alternative name"</span>&#125;&#125;</span><br><span class="line">    &#125; | <span class="built_in">Where-Object</span> &#123;</span><br><span class="line">        <span class="variable">$_</span>.San.Count <span class="nomarkup">-gt</span> <span class="number">0</span> -and </span><br><span class="line">        <span class="variable">$_</span>.San.Format(<span class="number">1</span>).Contains(<span class="string">"DNS Name=<span class="variable">$DnsSubject</span>"</span>)</span><br><span class="line">    &#125; | <span class="built_in">Select-Object</span> -ExpandProperty Thumbprint</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (<span class="nomarkup">-not</span> [string]::IsNullOrWhiteSpace(<span class="variable">$thumbprint</span>))&#123;</span><br><span class="line">        <span class="built_in">Write-Host</span> <span class="string">"Found certificate <span class="variable">$thumbprint</span> that covers <span class="variable">$DnsSubject</span>"</span></span><br><span class="line">        <span class="variable">$disoveredThumbprint</span> = <span class="variable">$thumbprint</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Write-Host</span> <span class="string">"Using <span class="variable">$disoveredThumbprint</span> for DiscoveredThumbprint"</span></span><br><span class="line">Set-OctopusVariable -name <span class="string">"DiscoveredThumbprint"</span> -value <span class="string">"<span class="variable">$disoveredThumbprint</span>"</span></span><br></pre></td></tr></table></figure>
+<p><code>DefaultThumbprint</code>, <code>SearchDynamicCertificate</code> and <code>DnsSubject</code> are all parameters of the template, and in our case they map directly to the original <code>thumbprint</code> project variable, a new checkbox project variable, and the binding DNS project variable, respectively. </p>
+<p>In a nutshell, it goes through all certificates in the certificate store, filters out any that are expired or predated, extracts the SAN entries, and returns the thumbprint of any certificates that have a SAN entry for the given address, which is then set as an output variable (<code>DiscoveredThumbprint</code>). This <em>could</em> return multiple certificates, if they cover the same DNS entries, but generally speaking you shouldn’t see that very much, if at all.</p>
+<p>If no certificate is found, or if <code>SearchDynamicCertificate</code> is false, then it just uses the default thumbprint provided. This process does assume that IIS is setup correctly (only one certificate per port, regardless of how many websites bind to that port), and does not do any validation that the certificate found is the correct one to be used. There are probably additional checks that could be performed around that area, but for now this works for “happy-path” deployments.</p>
 
             
         </div>
@@ -249,7 +233,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">TAGGED IN</span><br/>
                 
-    <a class="tag tag--primary tag--small t-link" href="/fuzzy-spork/tags/Deployment/">Deployment</a> <a class="tag tag--primary tag--small t-link" href="/fuzzy-spork/tags/Devops/">Devops</a> <a class="tag tag--primary tag--small t-link" href="/fuzzy-spork/tags/Octopus-Deploy/">Octopus Deploy</a>
+    <a class="tag tag--primary tag--small t-link" href="/fuzzy-spork/tags/Devops/">Devops</a> <a class="tag tag--primary tag--small t-link" href="/fuzzy-spork/tags/LetsEncrypt/">LetsEncrypt</a> <a class="tag tag--primary tag--small t-link" href="/fuzzy-spork/tags/Octopus-Deploy/">Octopus Deploy</a> <a class="tag tag--primary tag--small t-link" href="/fuzzy-spork/tags/SSL-Certificates/">SSL Certificates</a>
 
             </div>
         
@@ -259,7 +243,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/fuzzy-spork/2017/12/21/Searching-for-SSL-Certificates-based-on-SAN-entries/"  data-tooltip="Searching for SSL Certificates based on SAN entries">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -267,7 +251,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/fuzzy-spork/2017/08/02/Managing-Expectations/" data-tooltip="Managing Expectations">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/fuzzy-spork/2017/12/14/Using-Octopus-Deploy-to-deploy-multiple-projects-at-once/" data-tooltip="Using Octopus Deploy to deploy multiple projects at once">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
                     <i class="fa fa-angle-right"></i>
@@ -285,7 +269,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://kingofzeal.github.io/fuzzy-spork/2017/12/14/Using-Octopus-Deploy-to-deploy-multiple-projects-at-once/">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://kingofzeal.github.io/fuzzy-spork/2017/12/21/Searching-for-SSL-Certificates-based-on-SAN-entries/">
                     <i class="fa fa-facebook-official"></i>
                 </a>
             </li>
@@ -293,7 +277,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://kingofzeal.github.io/fuzzy-spork/2017/12/14/Using-Octopus-Deploy-to-deploy-multiple-projects-at-once/">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://kingofzeal.github.io/fuzzy-spork/2017/12/21/Searching-for-SSL-Certificates-based-on-SAN-entries/">
                     <i class="fa fa-twitter"></i>
                 </a>
             </li>
@@ -301,7 +285,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://kingofzeal.github.io/fuzzy-spork/2017/12/14/Using-Octopus-Deploy-to-deploy-multiple-projects-at-once/">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://kingofzeal.github.io/fuzzy-spork/2017/12/21/Searching-for-SSL-Certificates-based-on-SAN-entries/">
                     <i class="fa fa-google-plus"></i>
                 </a>
             </li>
@@ -351,7 +335,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/fuzzy-spork/2017/12/21/Searching-for-SSL-Certificates-based-on-SAN-entries/"  data-tooltip="Searching for SSL Certificates based on SAN entries">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -359,7 +343,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/fuzzy-spork/2017/08/02/Managing-Expectations/" data-tooltip="Managing Expectations">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/fuzzy-spork/2017/12/14/Using-Octopus-Deploy-to-deploy-multiple-projects-at-once/" data-tooltip="Using Octopus Deploy to deploy multiple projects at once">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
                     <i class="fa fa-angle-right"></i>
@@ -377,7 +361,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://kingofzeal.github.io/fuzzy-spork/2017/12/14/Using-Octopus-Deploy-to-deploy-multiple-projects-at-once/">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://kingofzeal.github.io/fuzzy-spork/2017/12/21/Searching-for-SSL-Certificates-based-on-SAN-entries/">
                     <i class="fa fa-facebook-official"></i>
                 </a>
             </li>
@@ -385,7 +369,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://kingofzeal.github.io/fuzzy-spork/2017/12/14/Using-Octopus-Deploy-to-deploy-multiple-projects-at-once/">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://kingofzeal.github.io/fuzzy-spork/2017/12/21/Searching-for-SSL-Certificates-based-on-SAN-entries/">
                     <i class="fa fa-twitter"></i>
                 </a>
             </li>
@@ -393,7 +377,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://kingofzeal.github.io/fuzzy-spork/2017/12/14/Using-Octopus-Deploy-to-deploy-multiple-projects-at-once/">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://kingofzeal.github.io/fuzzy-spork/2017/12/21/Searching-for-SSL-Certificates-based-on-SAN-entries/">
                     <i class="fa fa-google-plus"></i>
                 </a>
             </li>
@@ -424,7 +408,7 @@
             
             
             <li class="share-option">
-                <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://kingofzeal.github.io/fuzzy-spork/2017/12/14/Using-Octopus-Deploy-to-deploy-multiple-projects-at-once/">
+                <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://kingofzeal.github.io/fuzzy-spork/2017/12/21/Searching-for-SSL-Certificates-based-on-SAN-entries/">
                     <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
                 </a>
             </li>
@@ -432,7 +416,7 @@
             
             
             <li class="share-option">
-                <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://kingofzeal.github.io/fuzzy-spork/2017/12/14/Using-Octopus-Deploy-to-deploy-multiple-projects-at-once/">
+                <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://kingofzeal.github.io/fuzzy-spork/2017/12/21/Searching-for-SSL-Certificates-based-on-SAN-entries/">
                     <i class="fa fa-twitter"></i><span>Share on Twitter</span>
                 </a>
             </li>
@@ -440,7 +424,7 @@
             
             
             <li class="share-option">
-                <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://kingofzeal.github.io/fuzzy-spork/2017/12/14/Using-Octopus-Deploy-to-deploy-multiple-projects-at-once/">
+                <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://kingofzeal.github.io/fuzzy-spork/2017/12/21/Searching-for-SSL-Certificates-based-on-SAN-entries/">
                     <i class="fa fa-google-plus"></i><span>Share on Google+</span>
                 </a>
             </li>
@@ -632,9 +616,9 @@
     
         <script>
              var disqus_config = function () {
-                 this.page.url = 'http://kingofzeal.github.io/fuzzy-spork/2017/12/14/Using-Octopus-Deploy-to-deploy-multiple-projects-at-once/';
+                 this.page.url = 'http://kingofzeal.github.io/fuzzy-spork/2017/12/21/Searching-for-SSL-Certificates-based-on-SAN-entries/';
                  
-                    this.page.identifier = '2017/12/14/Using-Octopus-Deploy-to-deploy-multiple-projects-at-once/';
+                    this.page.identifier = '2017/12/21/Searching-for-SSL-Certificates-based-on-SAN-entries/';
                  
              };
             (function() {
