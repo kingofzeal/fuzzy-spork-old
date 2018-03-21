@@ -11,6 +11,7 @@ branches:
   - master
   
 before_install:
+- npm install hexo -g
 - npm install hexo-cli -g
 - npm install grunt-cli -g
 - npm install bower -g
@@ -18,7 +19,7 @@ before_install:
 - git submodule update --init --recursive
   
 install:
-- rm -rf node_modules/ && npm install
+- npm install
 - cd themes/tranquilpeak
 - npm install
 - bower install
