@@ -18,7 +18,7 @@ before_install:
 - git submodule update --init --recursive
   
 install:
-- npm install
+- rm -rf node_modules/ && npm install
 - cd themes/tranquilpeak
 - npm install
 - bower install
